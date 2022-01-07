@@ -7,6 +7,7 @@ const AUTH_API = 'http://localhost:8080/api/auth/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
+const roles = ['ROLE_USER', 'admin', 'mod'];
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class AuthService {
     return this.http.post(AUTH_API + 'signup', {
       username,
       email,
-      password
+      password, roles
     }, httpOptions);
   }
 }
