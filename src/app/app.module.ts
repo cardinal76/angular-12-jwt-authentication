@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,13 @@ import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BoardAllComponent } from './board-all/board-all.component';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {environment} from '../environments/environment.mock';
+import {MockModule} from "./mock/mock.module";
+
+const mockModule = environment.mockApi ? [MockModule] : [];
 
 @NgModule({
   declarations: [
@@ -37,6 +44,11 @@ import {MatSliderModule} from '@angular/material/slider';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSliderModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    ...mockModule,
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

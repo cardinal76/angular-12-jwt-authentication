@@ -3,4 +3,26 @@
     <p>ciaooooo</p>
   </header>
   <mat-slider min="1" max="100" step="1" value="50"></mat-slider>
+
+  <header class="jumbotron">
+    <p>{{countries.length}}</p>
+  </header>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Countries</mat-label>
+      <input type="text"
+             placeholder="Pick one"
+             aria-label="Fruits"
+             matInput
+             [formControl]="myControl"
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option *ngFor="let option of countries" [value]="option.name" (onSelectionChange)="getUsers(option)" >
+          {{option.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+
 </div>
